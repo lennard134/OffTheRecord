@@ -20,6 +20,34 @@
 
 ### 1. Install dependencies
 
+**Create a virtual environment**
+
+```bash
+python -m venv .venv
+```
+
+**Activate it**
+
+* macOS / Linux:
+
+  ```bash
+  source .venv/bin/activate
+  ```
+* Windows (PowerShell):
+
+  ```powershell
+  .venv\Scripts\Activate.ps1
+  ```
+
+**Deactivate it**
+
+```bash
+deactivate
+```
+
+When activated, your shell will show the environment name (e.g. `(.venv)`), and installed packages will be isolated to this project.
+
+After creation and activation, install requirements:
 ```bash
 pip install -r requirements.txt
 ```
