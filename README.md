@@ -1,6 +1,6 @@
-# 🔬 LabelForge
+# OffTheRecord
 
-**LLM-powered few-shot text classification with Ollama — runs 100% locally.**
+**LLM-powered text classification with Ollama**
 
 ---
 
@@ -71,7 +71,7 @@ Review & export
 ## Tips
 
 - **Zero-shot**: Skip the annotation step entirely — works fine for simple tasks
-- **Few-shot**: 3-5 examples per category significantly improves accuracy
+- **Few-shot**: 3-5 examples per category can improve accuracy; however, it also biases the model
 - **Task description**: Add a task description in the sidebar to guide the model
 - **Confidence threshold**: Filter low-confidence results for human review
 - **Config export**: Save your categories + few-shots to reproduce results later
