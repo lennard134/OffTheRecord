@@ -379,8 +379,16 @@ def ollama_generate(model: str, prompt: str, system: str = "") -> str:
     }
     if system:
         payload["system"] = system
-    r = requests.post(f"{OLLAMA_BASE}/api/generate", json=payload, timeout=120)
-    r.raise_for_status()
+
+    try:
+        r = requests.post(f"{OLLAMA_BASE}/api/generate", json=payload, timeout=120)
+        r.raise_for_status()
+    except requests.exceptions.Timeout:
+        print("Request timed out")
+    except requests.exceptions.HTTPError as e:
+        print(f"HTTP error: {e} | Response: {getattr(r, 'text', None)}")
+    except requests.exceptions.RequestException as e:
+        print(f"Request failed: {e}")
     prob = np.exp(r.json()["logprobs"][0]['logprob'])
     out = r.json().get("response", "").strip()
     return out, prob
@@ -428,9 +436,8 @@ def suggest_categories(model: str, texts: list[str], n: int = 5,
     text_len = sum(len(x) for x in texts)
     if text_len > MAX_CONTEXT:
         print(f"TEXT LENGTH TOO LONG WITH {text_len}")
-        
-    sample = random.sample(texts, 1000)
-    # sample = texts[:20]
+    sample_size =  min(len(texts,1000))
+    sample = random.sample(texts, sample_size)
     sample_str = "\n".join(f"- {t[:200]}" for t in sample)
     task_hint = f"Task context: {task_description}\n\n" if task_description else ""
     prompt = f"""{task_hint}Analyze these text samples and suggest {n} distinct, mutually-exclusive classification categories.
@@ -719,6 +726,7 @@ if st.session_state.step == 1:
             st.session_state.df = working
             removed = original_len - len(working)
             st.success(f"✓ Removed {removed} rows → {len(working):,} remaining")
+
 # ════════════════════════════════════════════════════════════════════════════
 # STEP 2 — Define Categories
 # ════════════════════════════════════════════════════════════════════════════
