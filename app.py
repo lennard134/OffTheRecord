@@ -436,7 +436,7 @@ def suggest_categories(model: str, texts: list[str], n: int = 5,
     text_len = sum(len(x) for x in texts)
     if text_len > MAX_CONTEXT:
         print(f"TEXT LENGTH TOO LONG WITH {text_len}")
-    sample_size =  min(len(texts,1000))
+    sample_size =  min(len(texts),1000)
     sample = random.sample(texts, sample_size)
     sample_str = "\n".join(f"- {t[:200]}" for t in sample)
     task_hint = f"Task context: {task_description}\n\n" if task_description else ""
