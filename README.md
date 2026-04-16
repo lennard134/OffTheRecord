@@ -1,6 +1,6 @@
-# OffTheRecord
+# 🔬 LabelForge
 
-**LLM-powered text classification with Ollama**
+**LLM-powered few-shot text classification with Ollama — runs 100% locally.**
 
 ---
 
@@ -20,34 +20,7 @@
 
 ### 1. Install dependencies
 
-**Create a virtual environment**
-
-```bash
-python -m venv .venv
-```
-
-**Activate it**
-
-* macOS / Linux:
-
-  ```bash
-  source .venv/bin/activate
-  ```
-* Windows (PowerShell):
-
-  ```powershell
-  .venv\Scripts\Activate.ps1
-  ```
-
-**Deactivate it**
-
-```bash
-deactivate
-```
-
-When activated, your shell will show the environment name (e.g. `(.venv)`), and installed packages will be isolated to this project.
-
-After creation and activation, install requirements:
+In terminal, navigate to the Github folder and:
 ```bash
 pip install -r requirements.txt
 ```
@@ -99,7 +72,7 @@ Review & export
 ## Tips
 
 - **Zero-shot**: Skip the annotation step entirely — works fine for simple tasks
-- **Few-shot**: 3-5 examples per category can improve accuracy; however, it also biases the model
+- **Few-shot**: 3-5 examples per category significantly improves accuracy
 - **Task description**: Add a task description in the sidebar to guide the model
 - **Confidence threshold**: Filter low-confidence results for human review
 - **Config export**: Save your categories + few-shots to reproduce results later
