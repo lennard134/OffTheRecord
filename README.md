@@ -20,8 +20,9 @@
 
 ### 1. Install dependencies
 
-In terminal, navigate to the Github folder and:
 ```bash
+# In terminal, navigate to the Github folder and:
+
 pip install -r requirements.txt
 ```
 
@@ -35,14 +36,12 @@ ollama serve
 ### 3. Pull a model (Gemma recommended)
 
 ```bash
-# Fast (4B) — good for most tasks
+# Choose any of models ollama provides, this workshop works with gemma models, like:
 ollama pull gemma3:4b
 
-# Better accuracy
-ollama pull gemma3:12b
+#To check which models are installed:
+ollama list
 
-# Best accuracy (needs ~16GB RAM)
-ollama pull gemma3:27b
 ```
 
 ### 4. Run the app
