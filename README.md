@@ -1,4 +1,4 @@
-# 🔬 LabelForge
+# LabelForge
 
 **LLM-powered few-shot text classification with Ollama — runs 100% locally.**
 
